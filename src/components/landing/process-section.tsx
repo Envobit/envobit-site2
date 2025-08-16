@@ -1,31 +1,35 @@
-'use client';
+"use client";
 
-import { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const processSteps = [
   {
-    step: '01',
-    title: 'Exploration & Product Analysis',
-    description: 'We start by understanding your vision, goals, and the challenges we need to solve. This phase is all about deep listening and research.',
+    step: "01",
+    title: "Exploration & Product Analysis",
+    description:
+      "We start by understanding your vision, goals, and the challenges we need to solve. This phase is all about deep listening and research.",
   },
   {
-    step: '02',
-    title: 'Product Design (UI/UX)',
-    description: 'Our design team creates intuitive, beautiful interfaces that provide a seamless user experience, turning complex problems into simple solutions.',
+    step: "02",
+    title: "Product Design (UI/UX)",
+    description:
+      "Our design team creates intuitive, beautiful interfaces that provide a seamless user experience, turning complex problems into simple solutions.",
   },
   {
-    step: '03',
-    title: 'Development & Implementation',
-    description: 'With a solid plan and design, our engineers build your product using modern technologies, focusing on quality, scalability, and performance.',
+    step: "03",
+    title: "Development & Implementation",
+    description:
+      "With a solid plan and design, our engineers build your product using modern technologies, focusing on quality, scalability, and performance.",
   },
   {
-    step: '04',
-    title: 'Testing, Deployment & Support',
-    description: 'We rigorously test everything before launch. After deployment, we provide ongoing support to ensure your product runs smoothly.',
+    step: "04",
+    title: "Testing, Deployment & Support",
+    description:
+      "We rigorously test everything before launch. After deployment, we provide ongoing support to ensure your product runs smoothly.",
   },
 ];
 
@@ -45,11 +49,11 @@ const ProcessSection = () => {
     let ctx = gsap.context(() => {
       gsap.to(line, {
         strokeDashoffset: 0,
-        ease: 'none',
+        ease: "none",
         scrollTrigger: {
           trigger: component.current,
-          start: 'top center',
-          end: 'bottom bottom',
+          start: "top center",
+          end: "bottom bottom",
           scrub: true,
         },
       });
@@ -59,11 +63,11 @@ const ProcessSection = () => {
           opacity: 0,
           y: 50,
           duration: 1,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
             trigger: item,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
         });
       });
@@ -86,7 +90,10 @@ const ProcessSection = () => {
         </div>
 
         <div className="relative mt-20">
-          <div className="absolute left-1/2 top-0 -translate-x-1/2" style={{ height: 'calc(100% - 4rem)' }}>
+          <div
+            className="absolute left-1/2 top-0 -translate-x-1/2"
+            style={{ height: "calc(100% - 4rem)" }}
+          >
             <svg
               width="2"
               height="100%"
@@ -125,18 +132,32 @@ const ProcessSection = () => {
               >
                 <div
                   className={`text-left ${
-                    index % 2 === 0 ? 'md:text-right' : 'md:order-2 md:text-left'
+                    index % 2 === 0
+                      ? "md:text-right"
+                      : "md:order-2 md:text-left"
                   }`}
                 >
-                  <span className="inline-block rounded-full bg-primary/10 px-4 py-2 font-headline font-bold text-primary">
+                  <span className="inline-block rounded-full bg-accent/10 px-4 py-2 font-headline font-bold text-accent">
                     {step.step}
                   </span>
                   <h3 className="mt-4 font-headline text-2xl font-semibold text-foreground">
                     {step.title}
                   </h3>
                 </div>
-                <div className={`flex items-center ${index % 2 === 0 ? '' : 'md:order-1'}`}>
-                  <p className={`border-l-4 border-primary pl-6 ${index % 2 === 0 ? '' : 'md:border-l-0 md:border-r-4 md:pl-0 md:pr-6 md:text-right'}`}>{step.description}</p>
+                <div
+                  className={`flex items-center ${
+                    index % 2 === 0 ? "" : "md:order-1"
+                  }`}
+                >
+                  <p
+                    className={`border-l-4 border-accent pl-6 ${
+                      index % 2 === 0
+                        ? ""
+                        : "md:border-l-0 md:border-r-4 md:pl-0 md:pr-6 md:text-right"
+                    }`}
+                  >
+                    {step.description}
+                  </p>
                 </div>
               </div>
             ))}

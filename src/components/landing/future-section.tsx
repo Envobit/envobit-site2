@@ -1,17 +1,19 @@
-'use client';
+"use client";
 
-import { useLayoutEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Link from 'next/link';
+import { useLayoutEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FutureSection = () => {
   const component = useRef<HTMLElement>(null);
-  const elementsRef = useRef<(HTMLHeadingElement | HTMLParagraphElement | HTMLDivElement | null)[]>([]);
+  const elementsRef = useRef<
+    (HTMLHeadingElement | HTMLParagraphElement | HTMLDivElement | null)[]
+  >([]);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -21,11 +23,11 @@ const FutureSection = () => {
             opacity: 0,
             y: 50,
             duration: 1,
-            ease: 'power3.out',
+            ease: "power3.out",
             scrollTrigger: {
               trigger: el,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
+              start: "top 85%",
+              toggleActions: "play none none none",
             },
           });
         }
@@ -64,12 +66,16 @@ const FutureSection = () => {
             ref={(el) => (elementsRef.current[3] = el)}
             className="mt-8 font-headline text-xl font-semibold text-foreground"
           >
-            When you work with Envobit, you're not just hiring developers. You're
-            joining a movement that's redefining how breakthrough products are
-            brought to life.
+            When you work with Envobit, you're not just hiring developers.
+            You're joining a movement that's redefining how breakthrough
+            products are brought to life.
           </p>
           <div ref={(el) => (elementsRef.current[4] = el)} className="mt-10">
-            <Button size="lg" asChild>
+            <Button
+              size="lg"
+              asChild
+              className="bg-accent text-accent-foreground hover:bg-accent/90"
+            >
               <Link href="/contact">
                 Join the Movement <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

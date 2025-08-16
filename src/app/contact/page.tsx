@@ -103,7 +103,8 @@ export default function ContactPage() {
             <div className="mx-auto max-w-2xl">
               <div className="text-center">
                 <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
-                  <span className="text-muted-foreground/50">Ready to </span>
+                  <span className="text-muted-foreground">Ready to </span>
+                  <br />
                   <span className="text-accent">start</span>
                   <span> your project?</span>
                 </h1>

@@ -105,28 +105,36 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              ref={(el) => (cardsRef.current[index] = el)}
+              ref={(el) => {
+                if (el) {
+                  cardsRef.current[index] = el;
+                }
+              }}
             >
-              <Card className="group relative bg-card/80 backdrop-blur-sm text-card-foreground shadow-xl rounded-lg border-border/20 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 h-full overflow-hidden">
-                <div className="absolute top-4 right-4 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {service.illustration}
+              <Card className="group relative bg-card/80 backdrop-blur-sm text-card-foreground shadow-xl rounded-lg border-border/20 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 h-full overflow-hidden p-6">
+                <div className="flex justify-between items-start h-full">
+                  <div className="flex-1">
+                    <CardHeader className="p-0 pb-4">
+                      <CardTitle className="font-headline text-2xl pt-2">
+                        {service.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                      <p className="text-muted-foreground mb-6 min-h-[7rem]">
+                        {service.description}
+                      </p>
+                      <a
+                        href="#"
+                        className="inline-flex items-center font-semibold text-foreground transition-colors group-hover:text-primary relative z-10"
+                      >
+                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </CardContent>
+                  </div>
+                  <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100 ml-4">
+                    {service.illustration}
+                  </div>
                 </div>
-                <CardHeader className="pb-4">
-                  <CardTitle className="font-headline text-2xl pt-2 relative z-10">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-6 h-24 relative z-10">
-                    {service.description}
-                  </p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center font-semibold text-foreground transition-colors group-hover:text-primary relative z-10"
-                  >
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </CardContent>
               </Card>
             </div>
           ))}
