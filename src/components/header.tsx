@@ -1,29 +1,34 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Logo from '@/components/logo';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Logo from "@/components/logo";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { useMagneticEffect } from "@/hooks/use-magnetic-effect";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const buttonRef = useMagneticEffect<HTMLButtonElement>();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 transition-all duration-300',
+        "sticky top-0 z-50 transition-all duration-300",
         scrolled
-          ? 'bg-background/80 shadow-md backdrop-blur-sm'
-          : 'bg-transparent'
+          ? "bg-background/80 shadow-md backdrop-blur-sm"
+          : "bg-transparent",
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
@@ -31,7 +36,7 @@ const Header = () => {
           <Logo />
         </Link>
         <nav className="flex items-center gap-6">
-          <Button asChild>
+          <Button asChild ref={buttonRef}>
             <Link href="/contact">Start a project</Link>
           </Button>
         </nav>
